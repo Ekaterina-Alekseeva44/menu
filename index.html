@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню с изображением</title>
+    <style>
+        .content {
+            display: flex; /* Используем Flexbox */
+            flex-direction: column; /* Располагаем элементы в колонку */
+            align-items: center; /* Центрируем элементы по горизонтали */
+            justify-content: center; /* Центрируем элементы по вертикали */
+    
+            padding: 40px; /* Отступы */
+            background-color: white; /* Цвет фона */
+        }
+
+        .container {
+           max-width: 1300px;
+           width: 100%;
+           margin: 0 auto;
+        }
+
+        #image-container {
+            display: none; 
+            margin-top: 10px; 
+            text-align: center; 
+        }
+
+        #show-image {
+            all: unset; 
+            width: 300px;
+            height: 50px; 
+            background-color: rgb(235, 215, 180); 
+            color: black; 
+            border: 1px solid rgb(12, 12, 12); 
+            border-radius: 5px; 
+            padding: 7px; 
+            text-align: center; 
+            cursor: pointer; 
+            display: inline-block; 
+            font-size: 16px; 
+        }
+
+        #show-image:hover {
+            background-color: rgb(200, 180, 150); 
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="content">
+        <section class="container"></section> 
+        <div id="image-container">
+            <img id="image" src="" alt="Изображение">
+        </div>
+        <button id="show-image">ПОКАЗАТЬ МЕНЮ</button>
+    </div>
+
+
+    <script>
+        let isImageVisible = false; // Переменная для отслеживания состояния изображения
+
+        document.getElementById('show-image').addEventListener('click', async () => {
+            const imageContainer = document.getElementById('image-container');
+            const button = document.getElementById('show-image');
+
+            if (!isImageVisible) {
+                try {
+                    const response = await fetch('http://localhost:3000/image'); // Запрос к бэкэнду
+                    const data = await response.json();
+                    const image = document.getElementById('image');
+                    image.src = data.url; // Устанавливаем URL изображения
+                    imageContainer.style.display = 'block'; // Показываем контейнер с изображением
+                    button.textContent = 'ЗАКРЫТЬ МЕНЮ'; // Меняем текст на кнопке
+                    isImageVisible = true; // Устанавливаем состояние видимости изображения
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                }
+            } else {
+                imageContainer.style.display = 'none'; // Скрываем контейнер с изображением
+                button.textContent = 'ПОКАЗАТЬ МЕНЮ'; // Меняем текст на кнопке обратно
+                isImageVisible = false; // Устанавливаем состояние видимости изображения
+            }
+        });
+    </script>
+</body>
+</html>
