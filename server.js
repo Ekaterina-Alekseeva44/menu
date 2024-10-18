@@ -13,7 +13,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Пример маршрута для получения изображения
 app.get('/image', (req, res) => {
-    res.json({ url: 'http://localhost:3000/images/your-image.jpg' }); // Замените на ваше изображение
+    res.json({ url: 'http://localhost:3000/images/your-image.jpg' }); // Изображение
 });
 
 // Запуск сервера

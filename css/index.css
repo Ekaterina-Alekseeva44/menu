@@ -1,19 +1,28 @@
 
+@font-face {
+    font-family: 'Roboto Flex'; 
+    src: url('../fonts/RobotoFlex-Regular.woff2') format('woff2'),
+         url('../fonts/RobotoFlex-Regular.woff') format('woff'),
+         url('../fonts/RobotoFlex-Regular.ttf') format('truetype');
+    font-weight: normal; 
+    font-style: normal;  
+  }
+        
         .content {
             
     
-            padding: 40px; /* Отступы */
-            background-color: white; /* Цвет фона */
+            padding: 40px; 
+            background-color: white; 
         }
 
         .container {
            max-width: 1300px;
            width: 100%;
            margin: 0 auto;
-           display: flex; /* Используем Flexbox */
-            flex-direction: column; /* Располагаем элементы в колонку */
-            align-items: center; /* Центрируем элементы по горизонтали */
-            justify-content: center; /* Центрируем элементы по вертикали */
+           display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
         }
 
         #image-container {
@@ -23,8 +32,8 @@
 
         #show-image {
             all: unset; 
-            width: 300px;
-            height: 50px; 
+            width: 400px;
+            height: 45px; 
             background-color: rgb(235, 215, 180); 
             color: black; 
             border: 1px solid rgb(12, 12, 12); 
@@ -34,6 +43,9 @@
             cursor: pointer; 
             display: inline-block; 
             font-size: 16px; 
+            font-family: 'Roboto Flex'; 
+            font-weight: normal; 
+            font-style: normal;  
         }
 
         #show-image:hover {
